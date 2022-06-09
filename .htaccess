@@ -1,0 +1,22 @@
+Options +FollowSymLinks 
+ServerSignature Off
+RewriteEngine On
+
+#Lỗi không tồn tại
+ErrorDocument 404 /views/error/404.php
+ErrorDocument 500 /views/error/500.php
+
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R]
+
+# View
+RewriteRule ^$ /views/index.php [L]
+RewriteRule ^login$ /views/account/login.php [L]
+RewriteRule ^register$ /views/account/register.php [L]
+RewriteRule ^user/bindbankcard$ /views/user/bank.php [L]
+
+# API
+RewriteRule ^api/webapi/account$ /model/account/account.controller.php [L]
+RewriteRule ^api/webapi/user/info/members$ /model/user/info.controller.php [L]
+RewriteRule ^api/webapi/user/add/bank$ /model/user/info.controller.php [L]
+RewriteRule ^api/webapi/user/roses$ /model/handling/plusRoses.controller.php [L]
